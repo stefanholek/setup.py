@@ -5,7 +5,7 @@ __version__ = pkg_resources.get_distribution('mypackage').version
 
 
 def main():
-    parser = argparse.ArgumentParser(description='My package')
+    parser = argparse.ArgumentParser(description='My package description')
     parser.add_argument('-v', '--version',
                         help='show the version string and exit',
                         action='store_true')
