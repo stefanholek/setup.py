@@ -59,7 +59,7 @@ you, but also by tools like tox, travis, readthedocs, and even pip.
 5. Upload
 ---------
 
-The 'setup.py upload' command is safe to use in recent
+The 'setup.py upload' command is safe to use with recent
 versions of Python. See e.g. Python issue12226_ and issue22417_.
 
 .. _setup.cfg: https://github.com/stefanholek/setup.py/blob/master/setup.cfg
