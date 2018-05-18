@@ -1,15 +1,11 @@
-import sys
-
-from functools import partial
 from setuptools import setup, find_packages
+from io import open
 
-# reST files are UTF-8 encoded
-if sys.version_info >= (3,):
-    open = partial(open, encoding='utf-8')
 
-# Shut up PyPy
 def read_file(filename):
-    with open(filename) as fp:
+    """Return Unicode and universal newlines
+    """
+    with open(filename, encoding='utf-8') as fp:
         return fp.read()
 
 
@@ -44,6 +40,6 @@ setup(name='mypackage',
           'setuptools',
       ],
       entry_points={
-          'console_scripts': 'mycli=mypackage.mypackage:main',
+          'console_scripts': 'myscript=mypackage.mypackage:main',
       },
 )
