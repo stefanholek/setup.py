@@ -1,5 +1,5 @@
-from setuptools import setup, find_packages
 from io import open
+from setuptools import setup, find_packages
 
 
 def read_file(filename):
