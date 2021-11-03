@@ -15,6 +15,6 @@ def main():
     args = parser.parse_args()
 
     if args.version:
-        print('%s %s' % (parser.prog, __version__))
+        print(parser.prog, __version__)
     else:
         parser.print_usage()
