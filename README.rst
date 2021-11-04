@@ -1,77 +1,207 @@
-=========
+==============================================================================
 mypackage
-=========
-------------------------
-Another setup.py example
-------------------------
+==============================================================================
+------------------------------------------------------------------------------
+Another setup.py example 😎
+------------------------------------------------------------------------------
 
-This is where I disagree with @kennethreitz' setup.py example. 😎
+Contents
+==============================================================================
 
-https://github.com/kennethreitz/setup.py
+pyproject.toml
+------------------------------------------------------------------------------
 
-Issues
-====================
+Specifies the environment in which sdist and wheel distributions are built.
 
-1. Code
--------
+.. code:: cfg
 
-Setup.py should be as declarative as possible, no unnecessary coding in
-setup.py. Ideally, the file only contains a call to setup().
+    [build-system]
+    requires = ["setuptools", "wheel"]
+    build-backend = "setuptools.build_meta"
 
-I am always wary of code that is copied around. It is hard to update when
-a bug is found or a new Python version needs to be accommodated.
+https://setuptools.pypa.io/en/latest/build_meta.html
 
-The 'setup.py publish' command contained in the example is not strictly
-necessary and can be accomplished with setuptools alone. See point 4 below.
+setup.cfg
+------------------------------------------------------------------------------
 
-2. Version
-----------
+Contains metadata required to build "mypackage" with the setuptools backend.
 
-You do not want to read the version string from a Python file. In fact it is
-the other way round: The version is defined in setup.py and Python code
-accesses it via pkg_resources::
+.. code:: cfg
 
-    import pkg_resources
-    __version__ = pkg_resources.get_distribution('mypackage').version
+    [metadata]
+    name = mypackage
+    version = 1.0
+    description = My package
+    long_description = file: README.rst, CHANGES.rst
+    long_description_content_type = text/x-rst
+    classifiers =
+        Development Status :: 5 - Production/Stable
+        License :: OSI Approved :: BSD License
+        Operating System :: OS Independent
+        Programming Language :: Python
+        Programming Language :: Python :: 3
+    keywords = my package keywords
+    author = My Name
+    author_email = me@example.com
+    url = https://github.com/me/mypackage
+    project_urls =
+        Documentation = https://mypackage.readthedocs.io/en/stable
+        Issue Tracker = https://github.com/me/mypackage/issues
+        Source Code = https://github.com/me/mypackage
+    license = BSD-2-Clause
+    license_file = LICENSE
 
-Note that the version string is normalized by setuptools. It may also be
-modified by passing the --tag-build and --tag-date options.
+    [options]
+    packages = find:
+    include_package_data = true
+    install_requires =
+        importlib_metadata; python_version < "3.8"
+    python_requires = >=3.6
 
-3. setup.cfg
-------------
+    [options.extras_require]
+    docs =
+        sphinx
+        sphinx-rtd-theme
 
-You do not want to skip setup.cfg. Packages are built not only by
-you, but also by tools like tox, travis, readthedocs, and even pip.
-At least add a section for bdist_wheel::
+    [options.entry_points]
+    console_scripts =
+        myscript = mypackage.mypackage:main
 
-    [bdist_wheel]
-    universal = true
+    [build_sphinx]
+    source_dir = docs
+    build_dir = docs/_build
+    all_files = true
 
-4. Upload
----------
+https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 
-The 'setup.py upload' command is safe to use with recent
-versions of Python. See e.g. Python issue12226_ and issue22417_.
+setup.py
+------------------------------------------------------------------------------
 
-If desired, the 'publish' command can be realized as an alias::
+Almost empty now but still needed for the develop command (pip install -e).
 
-    [aliases]
-    publish = bdist_wheel upload
+.. code:: python
 
-.. _issue12226: https://bugs.python.org/issue12226
-.. _issue22417: https://bugs.python.org/issue22417
+    from setuptools import setup
 
-5. Releasers
-------------
+    setup()
 
-If you are dealing with more than a handful of packages look into dedicated
-software releasers like `jarn.mkrelease`_ and `zest.releaser`_.
+https://setuptools.pypa.io/en/latest/userguide/commands.html
 
-.. _`jarn.mkrelease`: https://pypi.org/project/jarn.mkrelease
-.. _`zest.releaser`: https://pypi.org/project/zest.releaser
+MANIFEST.in
+------------------------------------------------------------------------------
+
+Makes sure all data files end up in the sdist.
+
+.. code::
+
+    include LICENSE tox.ini *.rst
+
+https://setuptools.pypa.io/en/latest/deprecated/distutils/sourcedist.html#manifest
+
+LICENSE
+------------------------------------------------------------------------------
+
+BSD 2-Clause by default. Feel free to use your favorite license instead.
+
+https://choosealicense.com/licenses/
+
+README.rst
+------------------------------------------------------------------------------
+
+Readme.
+
+CHANGES.rst
+------------------------------------------------------------------------------
+
+Changelog. Always add release dates!
+
+tox.ini
+------------------------------------------------------------------------------
+
+Run tests under multiple Python versions. Can also build docs.
+
+.. code:: cfg
+
+    [tox]
+    envlist = py36, py37, py38, py39, py310, pypy3
+
+    [testenv]
+    commands = python -m unittest discover {posargs}
+
+    [testenv:docs]
+    extras = docs
+    commands = python setup.py build_sphinx {posargs}
+
+    [pytest]
+    testpaths = mypackage/tests
+
+.. code:: sh
+
+    $ tox
+    $ tox -e py310
+
+https://tox.wiki
+
+docs
+------------------------------------------------------------------------------
+
+Standard sphinx-quickstart generated docs with the "Read the Docs" theme
+enabled.
+
+.. code:: sh
+
+    $ tox -e docs
+    $ open docs/_build/html/index.html
+
+https://www.sphinx-doc.org and
+https://readthedocs.org
+
+Rants
+=============================================================================
+
+Version
+    importlib.metadata.version('mypackage')
+
+No "single-sourcing the package version"
+    Point 5 only
+
+No setuptools_scm
+    setup.cfg is authoritative
+    tag is made from version not the other way round
+
+setup.cfg
+    long_description
+
+setup.py
+    develop
+    egg_info
+    sdist
+    bdist_wheel
+    build_sphinx
+
+No __name__ == '__main__' in setup.py
+    Tools!?
+
+Stick with setuptools
+    Maintained for 20 years
+    Reference implementation
+    setuptools
+    wheel
+    build
+    twine
+    importlib.metadata
+    importlib.resources
+    packaging
+    distlib
+
+Twine + Keyring + macOS
+    Need a signed Python executable
+    -> Python for macOS installer
+    -> Install virtualenv (pipx?)
+    -> Install twine + keyring
 
 License
-=======
+=============================================================================
 
 This package is in the public domain. The included LICENSE file is part of the
 example.
