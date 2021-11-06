@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.0 - Unreleased
+2.0 - Unreleased
 ----------------
 
 - Add pyproject.toml with setuptools backend.
@@ -10,7 +10,7 @@ Changes
 - Setup sphinx-rtd-theme and tox for local previews.
 - Drop Python 2 support.
 
-0.9 - 2017-09-18
+1.0 - 2017-09-18
 ----------------
 
 - Initial release.
