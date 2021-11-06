@@ -30,7 +30,7 @@ Contains metadata required to build "mypackage" with the setuptools backend.
 
     [metadata]
     name = mypackage
-    version = 1.0
+    version = attr: mypackage.__version__
     description = My package
     long_description = file: README.rst, CHANGES.rst
     long_description_content_type = text/x-rst
@@ -46,26 +46,21 @@ Contains metadata required to build "mypackage" with the setuptools backend.
     url = https://github.com/me/mypackage
     project_urls =
         Documentation = https://mypackage.readthedocs.io/en/stable
-        Issue Tracker = https://github.com/me/mypackage/issues
-        Source Code = https://github.com/me/mypackage
     license = BSD-2-Clause
     license_file = LICENSE
 
     [options]
     packages = find:
-    include_package_data = true
-    install_requires =
-        importlib_metadata; python_version < "3.8"
     python_requires = >=3.6
+
+    [options.entry_points]
+    console_scripts =
+        myscript = mypackage.mypackage:main
 
     [options.extras_require]
     docs =
         sphinx
         sphinx-rtd-theme
-
-    [options.entry_points]
-    console_scripts =
-        myscript = mypackage.mypackage:main
 
     [build_sphinx]
     source_dir = docs
@@ -189,8 +184,8 @@ Stick with setuptools
     wheel
     build
     twine
-    importlib.metadata
     importlib.resources
+    importlib.metadata
     packaging
     distlib
 
