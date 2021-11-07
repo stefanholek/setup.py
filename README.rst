@@ -2,7 +2,7 @@
 mypackage
 ==============================================================================
 ------------------------------------------------------------------------------
-Another setup.py example 😎
+😎 Another example Python package
 ------------------------------------------------------------------------------
 
 Contents
@@ -40,18 +40,23 @@ Contains metadata required to build "mypackage" with the setuptools backend.
         Operating System :: OS Independent
         Programming Language :: Python
         Programming Language :: Python :: 3
-    keywords = my package keywords
+    keywords = my, package, keywords
     author = My Name
     author_email = me@example.com
     url = https://github.com/me/mypackage
     project_urls =
-        Documentation = https://mypackage.readthedocs.io/en/stable
+        Documentation = https://mypackage.readthedocs.io/en/stable/
     license = BSD-2-Clause
-    license_file = LICENSE
 
     [options]
     packages = find:
+    install_requires =
+        setuptools
     python_requires = >=3.6
+
+    [options.packages.find]
+    exclude =
+        mypackage.tests
 
     [options.entry_points]
     console_scripts =
@@ -72,7 +77,7 @@ https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 setup.py
 ------------------------------------------------------------------------------
 
-Almost empty now but still needed for the develop command (pip install -e).
+Almost empty now but still required for the develop command (pip install -e).
 
 .. code:: python
 
@@ -85,11 +90,12 @@ https://setuptools.pypa.io/en/latest/userguide/commands.html
 MANIFEST.in
 ------------------------------------------------------------------------------
 
-Makes sure all data files end up in the sdist.
+Controls which files end up in the sdist.
 
 .. code::
 
     include LICENSE tox.ini *.rst
+    recursive-include mypackage/tests *.py
 
 https://setuptools.pypa.io/en/latest/deprecated/distutils/sourcedist.html#manifest
 
@@ -108,12 +114,12 @@ Readme.
 CHANGES.rst
 ------------------------------------------------------------------------------
 
-Changelog. Always add release dates!
+Changelog. Always add a release date!
 
 tox.ini
 ------------------------------------------------------------------------------
 
-Run tests under multiple Python versions. Can also build docs.
+Runs tests under multiple Python versions. Can also build docs.
 
 .. code:: cfg
 
@@ -132,10 +138,14 @@ Run tests under multiple Python versions. Can also build docs.
 
 .. code:: sh
 
+    $ pip install tox
+
+.. code:: sh
+
     $ tox
     $ tox -e py310
 
-https://tox.wiki
+https://tox.wiki/en/latest/
 
 docs
 ------------------------------------------------------------------------------
@@ -151,52 +161,31 @@ enabled.
 https://www.sphinx-doc.org and
 https://readthedocs.org
 
-Rants
+Build and Release
 =============================================================================
 
-Version
-    importlib.metadata.version('mypackage')
+Use PyPA approved tools to build distributions and upload them to PyPI:
 
-No "single-sourcing the package version"
-    Point 5 only
+.. code:: sh
 
-No setuptools_scm
-    setup.cfg is authoritative
-    tag is made from version not the other way round
+    $ pip install build twine
 
-setup.cfg
-    long_description
+.. code:: sh
 
-setup.py
-    develop
-    egg_info
-    sdist
-    bdist_wheel
-    build_sphinx
+    $ python -m build
+    $ twine upload dist/*
 
-No __name__ == '__main__' in setup.py
-    Tools!?
+https://pypa-build.readthedocs.io/en/stable/ and
+https://twine.readthedocs.io/en/stable/
 
-Stick with setuptools
-    Maintained for 20 years
-    Reference implementation
-    setuptools
-    wheel
-    build
-    twine
-    importlib.resources
-    importlib.metadata
-    packaging
-    distlib
+Related
+=============================================================================
 
-Twine + Keyring + macOS
-    Need a signed Python executable
-    -> Python for macOS installer
-    -> Install virtualenv (pipx?)
-    -> Install twine + keyring
+https://packaging.python.org
 
 License
 =============================================================================
 
 This package is in the public domain. The included LICENSE file is part of the
 example.
+
