@@ -1,9 +1,7 @@
+Example Python Package
 ==============================================================================
-mypackage
-==============================================================================
-------------------------------------------------------------------------------
-😎 Another example Python package
-------------------------------------------------------------------------------
+
+November 2021
 
 Contents
 ==============================================================================
@@ -13,7 +11,7 @@ pyproject.toml
 
 Specifies the environment in which sdist and wheel distributions are built.
 
-.. code:: cfg
+.. code:: toml
 
     [build-system]
     requires = ["setuptools", "wheel"]
@@ -24,9 +22,9 @@ https://setuptools.pypa.io/en/latest/build_meta.html
 setup.cfg
 ------------------------------------------------------------------------------
 
-Contains metadata required to build "mypackage" with the setuptools backend.
+Contains configuration required to build "mypackage" with the setuptools backend.
 
-.. code:: cfg
+.. code:: ini
 
     [metadata]
     name = mypackage
@@ -77,7 +75,8 @@ https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 setup.py
 ------------------------------------------------------------------------------
 
-Almost empty now but still required for the develop command (pip install -e).
+Almost empty now but still needed for (at least) the develop command
+(pip install -e).
 
 .. code:: python
 
@@ -90,7 +89,7 @@ https://setuptools.pypa.io/en/latest/userguide/commands.html
 MANIFEST.in
 ------------------------------------------------------------------------------
 
-Controls which files end up in the sdist.
+Controls which files end up in the sdist. Note that we include tests here.
 
 .. code::
 
@@ -121,7 +120,7 @@ tox.ini
 
 Runs tests under multiple Python versions. Can also build docs.
 
-.. code:: cfg
+.. code:: ini
 
     [tox]
     envlist = py36, py37, py38, py39, py310, pypy3
@@ -136,16 +135,16 @@ Runs tests under multiple Python versions. Can also build docs.
     [pytest]
     testpaths = mypackage/tests
 
-.. code:: sh
+.. code::
 
     $ pip install tox
 
-.. code:: sh
+.. code::
 
     $ tox
     $ tox -e py310
 
-https://tox.wiki/en/latest/
+https://tox.wiki/en/stable/
 
 docs
 ------------------------------------------------------------------------------
@@ -153,7 +152,7 @@ docs
 Standard sphinx-quickstart generated docs with the "Read the Docs" theme
 enabled.
 
-.. code:: sh
+.. code::
 
     $ tox -e docs
     $ open docs/_build/html/index.html
@@ -166,22 +165,18 @@ Build and Release
 
 Use PyPA approved tools to build distributions and upload them to PyPI:
 
-.. code:: sh
+.. code::
 
-    $ pip install build twine
+    $ pip install build
+    $ pip install twine
 
-.. code:: sh
+.. code::
 
     $ python -m build
     $ twine upload dist/*
 
 https://pypa-build.readthedocs.io/en/stable/ and
 https://twine.readthedocs.io/en/stable/
-
-Related
-=============================================================================
-
-https://packaging.python.org
 
 License
 =============================================================================
