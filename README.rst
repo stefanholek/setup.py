@@ -29,7 +29,7 @@ Contains configuration required to build "mypackage" with the setuptools backend
     [metadata]
     name = mypackage
     version = attr: mypackage.__version__
-    description = My package
+    description = My description
     long_description = file: README.rst, CHANGES.rst
     long_description_content_type = text/x-rst
     classifiers =
