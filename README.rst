@@ -132,9 +132,6 @@ Runs tests under multiple Python versions. Can also build docs.
     extras = docs
     commands = python setup.py build_sphinx {posargs}
 
-    [pytest]
-    testpaths = mypackage/tests
-
 .. code::
 
     $ pip install tox
