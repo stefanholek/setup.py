@@ -1,0 +1,15 @@
+*~
+*.sw[pon]
+.DS_Store
+Thumbs.db
+*.py[co]
+__pycache__
+*.so
+*.egg-info
+*.dist-info
+/build
+/dist
+/docs/_build/doctrees
+/docs/_build/html
+/.tox
+/.venv*
