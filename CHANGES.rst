@@ -9,7 +9,8 @@ Changes
 - Add sphinx-quickstart generated docs.
 - Setup sphinx-rtd-theme and tox for local previews.
 - Drop Python 2 support.
-- Include tests in sdists but not in wheels.
+- Move tests out of mypackage.
+- Include tests in sdist but not in wheel.
 
 1.0 - 2017-09-18
 ----------------
