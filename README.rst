@@ -54,7 +54,7 @@ Contains configuration required to build "mypackage" with the setuptools backend
 
     [options.packages.find]
     exclude =
-        mypackage.tests
+        tests
 
     [options.entry_points]
     console_scripts =
@@ -94,7 +94,7 @@ Controls which files end up in the sdist. Note that we include tests here.
 .. code::
 
     include LICENSE tox.ini *.rst
-    recursive-include mypackage/tests *.py
+    recursive-include tests *.py
 
 https://setuptools.pypa.io/en/latest/deprecated/distutils/sourcedist.html#manifest
 
