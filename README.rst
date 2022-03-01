@@ -126,7 +126,7 @@ Runs tests under multiple Python versions. Can also build docs.
     envlist = py36, py37, py38, py39, py310, pypy3
 
     [testenv]
-    commands = python -m unittest discover {posargs}
+    commands = python -m unittest discover -t . -s tests {posargs}
 
     [testenv:docs]
     extras = docs
