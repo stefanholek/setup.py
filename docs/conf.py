@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'mypackage'
-copyright = '2021, My Name'
+copyright = '2022, My Name'
 author = 'My Name'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0'
+release = '2.1'
 
 
 # -- General configuration ---------------------------------------------------

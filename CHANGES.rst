@@ -1,7 +1,11 @@
 Changes
 =======
 
-2.0 - Unreleased
+2.1 - Unreleased
+----------------
+
+
+2.0 - 2021-11-28
 ----------------
 
 - Add pyproject.toml with setuptools backend.
