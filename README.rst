@@ -77,7 +77,7 @@ https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 setup.py
 ------------------------------------------------------------------------------
 
-Almost empty now but still needed for (at least) the develop command
+Almost empty now but still needed for at least the develop command
 (pip install -e).
 
 .. code:: python
@@ -151,7 +151,7 @@ https://tox.wiki/en/stable/
 docs
 ------------------------------------------------------------------------------
 
-Standard sphinx-quickstart generated docs with the "Read the Docs" theme
+Standard, sphinx-quickstart generated docs with the "Read the Docs" theme
 enabled.
 
 .. code::
@@ -165,7 +165,7 @@ https://readthedocs.org
 Build and Release
 =============================================================================
 
-Use PyPA approved tools to build distributions and upload them to PyPI:
+Use PyPA tools to build distributions and upload them to PyPI:
 
 .. code::
 
