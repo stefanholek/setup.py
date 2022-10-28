@@ -48,6 +48,8 @@ Contains configuration required to build "mypackage" with the setuptools backend
 
     [options]
     packages = find:
+    include_package_data = false
+    zip_safe = false
     install_requires =
         setuptools
     python_requires = >=3.6

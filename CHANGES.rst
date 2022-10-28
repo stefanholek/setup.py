@@ -4,6 +4,7 @@ Changes
 2.1 - Unreleased
 ----------------
 
+- Set include_package_data and zip_safe to false.
 
 2.0 - 2021-11-28
 ----------------
