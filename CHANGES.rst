@@ -5,6 +5,7 @@ Changes
 ----------------
 
 - Set include_package_data and zip_safe to false.
+- Add py311 and pypy-3.8 to tox.ini.
 
 2.0 - 2021-11-28
 ----------------

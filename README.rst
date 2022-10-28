@@ -125,10 +125,13 @@ Runs tests under multiple Python versions. Can also build docs.
 .. code:: ini
 
     [tox]
-    envlist = py36, py37, py38, py39, py310, pypy3
+    envlist = py36, py37, py38, py39, py310, py311, pypy3
 
     [testenv]
     commands = python -m unittest discover -t . -s tests {posargs}
+
+    [testenv:pypy3]
+    basepython = pypy-3.8
 
     [testenv:docs]
     extras = docs
