@@ -160,7 +160,7 @@ enabled.
     $ open docs/_build/html/index.html
 
 https://www.sphinx-doc.org and
-https://readthedocs.org
+https://docs.readthedocs.io/en/stable/
 
 Build and Release
 =============================================================================
