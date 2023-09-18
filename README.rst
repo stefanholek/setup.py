@@ -52,7 +52,7 @@ Contains configuration required to build "mypackage" with the setuptools backend
     zip_safe = false
     install_requires =
         setuptools
-    python_requires = >=3.6
+    python_requires = >=3.7
 
     [options.packages.find]
     exclude =
@@ -66,11 +66,6 @@ Contains configuration required to build "mypackage" with the setuptools backend
     docs =
         sphinx
         sphinx-rtd-theme
-
-    [build_sphinx]
-    source_dir = docs
-    build_dir = docs/_build
-    all_files = true
 
 https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 
@@ -125,17 +120,16 @@ Runs tests under multiple Python versions. Can also build docs.
 .. code:: ini
 
     [tox]
-    envlist = py36, py37, py38, py39, py310, py311, pypy3
+    envlist = py37, py38, py39, py310, py311, pypy38
+    requires = tox>=4
 
     [testenv]
+    package = wheel
     commands = python -m unittest discover -t . -s tests {posargs}
-
-    [testenv:pypy3]
-    basepython = pypy-3.8
 
     [testenv:docs]
     extras = docs
-    commands = python setup.py build_sphinx {posargs}
+    commands = python -m sphinx -a -d docs/_build/doctrees {posargs} docs docs/_build/html
 
 .. code::
 
