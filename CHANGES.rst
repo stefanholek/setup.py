@@ -5,7 +5,10 @@ Changes
 ----------------
 
 - Set include_package_data and zip_safe to false.
-- Add py311 and pypy-3.8 to tox.ini.
+- Add py311 and pypy38 to tox.ini.
+- Drop Python 3.6 support.
+- Update tox.ini for tox 4.
+- Remove deprecated build_sphinx command.
 
 2.0 - 2021-11-28
 ----------------
